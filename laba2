@@ -1,0 +1,63 @@
+//подключаем библиотеки
+#include <iostream>
+
+//используем пространство 
+using namespace std;
+
+//оснвной метод
+int main() {
+    //вводим массив, куда будем записывать входные данные
+    double array[6];
+    for (int i = 0; i < 6; i++) {
+        cin >> array[i];
+    }
+
+    //массив для целых чисел
+    int array_int[6];
+    //счётчик очередного индекса для массива с целыми числами
+    int index_int = 0;
+
+    //массив для дробных чисел с целой частью
+    double array_doubleF[6];
+    //счётчик очередного индекса для массива с дробными чисел с целью частью
+    int index_doubleF = 0;
+
+    //массив для дробных чисел без целой части
+    double array_double[6];
+    //счётчик для массива дробных чисел без дробной части
+    int index_double = 0;
+
+    //проходим по всему массиву с входными данными
+    for (int i = 0; i < 6; i++) {
+        //проверка на целое число 
+        if (array[i] == ceil(array[i])) {
+            //явное преобразование числа double  в  int
+            array_int[index_int] = static_cast<int> (array[i]);
+            //делаем шаг
+            index_int++;
+        }
+        else if (array[i] - 1 > 0) {
+            array_doubleF[index_doubleF] = array[i];
+            index_doubleF++;
+        }
+        else {
+            array_double[index_double] = array[i];
+            index_double++;
+        }
+    }
+
+
+    //выводим массивы
+    for (int i = 0; i < index_int; i++) {
+        cout << array_int[i] << '\t';
+    }
+    for (int i = 0; i < index_doubleF; i++) {
+        cout << array_doubleF[i] << '\t';
+    }
+    for (int i = 0; i < index_double; i++) {
+        cout << array_double[i] << '\t';
+    }
+
+    //возращаем 0 -> программа завершилась правильно
+    return 0;
+}
